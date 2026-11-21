@@ -50,6 +50,12 @@ class LibreTubeApp : Application() {
         )
 
         /**
+         * Check for new subscription videos on every app start, so downloads
+         * begin even if the subscriptions tab is never opened
+         */
+        AutoDownloadScheduler.runNow(context = this)
+
+        /**
          * Handler for uncaught exceptions
          */
         val defaultExceptionHandler = Thread.getDefaultUncaughtExceptionHandler()
