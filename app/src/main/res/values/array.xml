@@ -132,6 +132,26 @@
         <item>32kbps</item>
     </string-array>
 
+    <string-array name="autoDownloadAudioQuality">
+        <item>@string/auto</item>
+        <item>196kbps</item>
+        <item>128kbps</item>
+        <item>96kbps</item>
+        <item>64kbps</item>
+        <item>48kbps</item>
+        <item>32kbps</item>
+    </string-array>
+
+    <string-array name="autoDownloadAudioQualityValues">
+        <item />
+        <item>196kbps</item>
+        <item>128kbps</item>
+        <item>96kbps</item>
+        <item>64kbps</item>
+        <item>48kbps</item>
+        <item>32kbps</item>
+    </string-array>
+
     <string-array name="checkingFrequency">
         <item>@string/checking_frequency_15_minutes</item>
         <item>@string/checking_frequency_30_minutes</item>

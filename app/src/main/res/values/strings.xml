@@ -434,6 +434,13 @@
     <string name="download_playlist_note">Please select the maximum audio/video quality to download. Captions will only be downloaded if available.</string>
     <string name="enqueue_playlist_description">Shows a notification when enqueueing videos of a playlist to be downloaded.</string>
     <string name="enqueueing_playlist_download">Enqueueing videos to download of playlist "%1$s"</string>
+    <string name="automatic_downloads">Automatic downloads</string>
+    <string name="auto_download">Auto download videos</string>
+    <string name="auto_download_summary">Automatically download new videos from your subscriptions with your chosen quality. Can use a lot of storage.</string>
+    <string name="auto_download_video_quality">Auto download video quality</string>
+    <string name="auto_download_audio_quality">Auto download audio quality</string>
+    <string name="auto_download_wifi_only">Only download on Wi-Fi</string>
+    <string name="auto_download_wifi_only_summary">Avoids using your mobile data for automatic downloads</string>
     <string name="audio_language">Audio language</string>
     <string name="default_language">Default</string>
     <string name="external_player">External player</string>
