@@ -238,11 +238,13 @@ object DownloadHelper {
                     !it.url.isNullOrEmpty() && !it.format.orEmpty().contains("HLS")
                 },
                 PreferenceHelper.getString(PreferenceKeys.AUTO_DOWNLOAD_VIDEO_QUALITY, "1080p")
+                    .ifBlank { "1080p" }
             )
         }
         val audioStream = getBestAudioStream(
             streams.audioStreams.filter { !it.url.isNullOrEmpty() },
             PreferenceHelper.getString(PreferenceKeys.AUTO_DOWNLOAD_AUDIO_QUALITY, "128kbps")
+                .ifBlank { "128kbps" }
         )
 
         if (videoStream == null && audioStream == null) return false
@@ -284,8 +286,8 @@ object DownloadHelper {
 
     /**
      * Returns the stream with the highest quality that does not exceed [preferredQuality].
-     * An empty [preferredQuality] (automatic) returns the highest quality available. If no
-     * stream is below the preferred quality, the lowest quality stream is returned.
+     * A quality without a numeric part (e.g. "Auto") returns the highest quality available.
+     * If no stream is below the preferred quality, the lowest quality stream is returned.
      */
     private fun getBestMatchingStream(
         streams: List<PipedStream>,

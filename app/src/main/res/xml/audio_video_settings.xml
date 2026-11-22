@@ -83,8 +83,8 @@
         <ListPreference
             android:icon="@drawable/ic_hd"
             app:defaultValue="1080p"
-            app:entries="@array/defres"
-            app:entryValues="@array/defresValue"
+            app:entries="@array/autoDownloadVideoQuality"
+            app:entryValues="@array/autoDownloadVideoQualityValues"
             app:key="auto_download_video_quality"
             app:title="@string/auto_download_video_quality"
             app:useSimpleSummaryProvider="true" />
