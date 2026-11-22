@@ -36,10 +36,9 @@ class AudioVideoSettings : BasePreferenceFragment() {
             updateAutoDownloadPreferencesEnabledState(newValue == true)
             true
         }
-        autoDownloadAudioOnly?.setOnPreferenceChangeListener { _, _ ->
+        autoDownloadAudioOnly?.setOnPreferenceChangeListener { _, newValue ->
             // the video quality picker is irrelevant for audio only downloads
-            autoDownloadVideoQuality?.isEnabled = autoDownload?.isChecked == true &&
-                autoDownloadAudioOnly?.isChecked != true
+            autoDownloadVideoQuality?.isEnabled = autoDownload?.isChecked == true && newValue != true
             true
         }
     }
