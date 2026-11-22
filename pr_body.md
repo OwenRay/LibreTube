@@ -9,16 +9,17 @@ Automatic downloads
 ├── Auto download videos           [Switch, default off]
 ├── Only download on Wi-Fi         [Switch, default on]
 ├── Auto download video quality    [Auto / 2160p … 144p, default 1080p]
-└── Auto download audio quality    [Auto / 196 … 32 kbps, default 128 kbps]
+├── Auto download audio quality    [Auto / 196 … 32 kbps, default 128 kbps]
+└── Audio only                     [Switch, default off]
 ```
 
-The pickers and the Wi-Fi switch are greyed out while the feature is off. All defaults are conservative: off out of the box, Wi-Fi-only, 1080p/128kbps caps — `Auto` is an explicit opt-in for "best available".
+The pickers and the Wi-Fi switch are greyed out while the feature is off, and the video quality picker greys out when Audio only is on. All defaults are conservative: off out of the box, Wi-Fi-only, 1080p/128kbps caps — `Auto` is an explicit opt-in for "best available".
 
 **Control flow** — three triggers feed one sweep, all reuse the existing `DownloadService` pipeline:
 
 ```
-app start ──────────────► AutoDownloadScheduler.enqueuePeriodic (every 6h)
-toggle switched on ─────► AutoDownloadScheduler.runNow
+app start ──────────────► AutoDownloadScheduler.runNow        (immediate check)
+                        └► AutoDownloadScheduler.enqueuePeriodic (every 6h)
 subscriptions tab shown ─► SubscriptionsFragment feed sweep
 
                           └─► AutoDownloadWorker / feed sweep
@@ -32,12 +33,14 @@ subscriptions tab shown ─► SubscriptionsFragment feed sweep
                                          │   └─ audio prefers main track over
                                          │      dubbed/descriptive (like the dialog)
                                          └─ DownloadService.start(...)
+                                            └─ audio only: skips the video stream
+                                               (like the dialog's "no video" option)
 ```
 
 Implementation notes:
 - The worker mirrors the existing `NotificationWorker` pattern (`WorkManager`, `FeedRefresh.All`, retry on failure) and is scheduled in `LibreTubeApp.onCreate` with `KEEP`, so no duplicate schedules.
 - Downloads are tracked by the `download` table (`exists()`), so failures are naturally retried on the next check instead of being enqueued twice.
-- Failed enqueues are skipped quietly — no crash, no duplicate; the in-app sweep runs whenever the subscriptions tab is opened, which is the primary trigger on Android 12+ where background foreground-service starts are restricted.
+- Failed enqueues are skipped quietly — no crash, no duplicate; the in-app sweep runs on every app start and whenever the subscriptions tab is opened, which is the primary trigger on Android 12+ where background foreground-service starts are restricted.
 - Quality picking reuses the existing cap logic (`getWhileDigit`, lowest-stream fallback) and honours an external download provider preference like all manual paths.
 
 ## Evidence

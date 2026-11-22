@@ -441,6 +441,8 @@
     <string name="auto_download_audio_quality">Auto download audio quality</string>
     <string name="auto_download_wifi_only">Only download on Wi-Fi</string>
     <string name="auto_download_wifi_only_summary">Avoids using your mobile data for automatic downloads</string>
+    <string name="auto_download_audio_only">Audio only</string>
+    <string name="auto_download_audio_only_summary">Only download the audio track of new videos</string>
     <string name="audio_language">Audio language</string>
     <string name="default_language">Default</string>
     <string name="external_player">External player</string>

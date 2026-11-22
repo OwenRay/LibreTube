@@ -112,6 +112,7 @@ object PreferenceKeys {
     const val AUTO_DOWNLOAD_WIFI_ONLY = "auto_download_wifi_only"
     const val AUTO_DOWNLOAD_VIDEO_QUALITY = "auto_download_video_quality"
     const val AUTO_DOWNLOAD_AUDIO_QUALITY = "auto_download_audio_quality"
+    const val AUTO_DOWNLOAD_AUDIO_ONLY = "auto_download_audio_only"
 
     // History
     const val SELECTED_HISTORY_STATUS_FILTER = "filter_history_status"

@@ -226,12 +226,20 @@ object DownloadHelper {
         // upcoming and live streams can't be downloaded and would only waste bandwidth
         if (streams.isLive) return false
 
-        val videoStream = getBestMatchingStream(
-            streams.videoStreams.filter {
-                !it.url.isNullOrEmpty() && !it.format.orEmpty().contains("HLS")
-            },
-            PreferenceHelper.getString(PreferenceKeys.AUTO_DOWNLOAD_VIDEO_QUALITY, "1080p")
-        )
+        // audio only downloads skip the video stream, like the "no video" option
+        // of the regular download dialog
+        val audioOnly =
+            PreferenceHelper.getBoolean(PreferenceKeys.AUTO_DOWNLOAD_AUDIO_ONLY, false)
+        val videoStream = if (audioOnly) {
+            null
+        } else {
+            getBestMatchingStream(
+                streams.videoStreams.filter {
+                    !it.url.isNullOrEmpty() && !it.format.orEmpty().contains("HLS")
+                },
+                PreferenceHelper.getString(PreferenceKeys.AUTO_DOWNLOAD_VIDEO_QUALITY, "1080p")
+            )
+        }
         val audioStream = getBestAudioStream(
             streams.audioStreams.filter { !it.url.isNullOrEmpty() },
             PreferenceHelper.getString(PreferenceKeys.AUTO_DOWNLOAD_AUDIO_QUALITY, "128kbps")

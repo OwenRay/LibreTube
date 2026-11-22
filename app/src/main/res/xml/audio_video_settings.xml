@@ -98,6 +98,13 @@
             app:title="@string/auto_download_audio_quality"
             app:useSimpleSummaryProvider="true" />
 
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_audio"
+            app:defaultValue="false"
+            app:key="auto_download_audio_only"
+            app:summary="@string/auto_download_audio_only_summary"
+            app:title="@string/auto_download_audio_only" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
