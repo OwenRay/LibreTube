@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.core.app.NotificationChannelCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.work.ExistingPeriodicWorkPolicy
+import com.github.libretube.helpers.AutoDownloadScheduler
 import com.github.libretube.helpers.ImageHelper
 import com.github.libretube.helpers.NewPipeExtractorInstance
 import com.github.libretube.helpers.NotificationHelper
@@ -39,6 +40,20 @@ class LibreTubeApp : Application() {
             context = this,
             existingPeriodicWorkPolicy = ExistingPeriodicWorkPolicy.KEEP
         )
+
+        /**
+         * Schedule the periodic auto download check for new subscription videos
+         */
+        AutoDownloadScheduler.enqueuePeriodic(
+            context = this,
+            existingPolicy = ExistingPeriodicWorkPolicy.KEEP
+        )
+
+        /**
+         * Check for new subscription videos on every app start, so downloads
+         * begin even if the subscriptions tab is never opened
+         */
+        AutoDownloadScheduler.runNow(context = this)
 
         /**
          * Handler for uncaught exceptions

@@ -20,6 +20,7 @@ import com.github.libretube.databinding.FragmentSubscriptionsBinding
 import com.github.libretube.db.DatabaseHelper
 import com.github.libretube.extensions.toID
 import com.github.libretube.extensions.toastFromMainDispatcher
+import com.github.libretube.helpers.DownloadHelper
 import com.github.libretube.helpers.NavigationHelper
 import com.github.libretube.helpers.PreferenceHelper
 import com.github.libretube.obj.SelectableOption
@@ -112,6 +113,13 @@ class SubscriptionsFragment : DynamicLayoutManagerFragment(R.layout.fragment_sub
                     showFeed(!alreadyShowedFeedOnce)
                 }
                 alreadyShowedFeedOnce = true
+
+                // auto download new videos of the feed if enabled
+                if (PreferenceHelper.getBoolean(PreferenceKeys.AUTO_DOWNLOAD, false)) {
+                    lifecycleScope.launch(Dispatchers.IO) {
+                        DownloadHelper.autoDownloadFeedItems(requireContext(), feed)
+                    }
+                }
             }
 
             feed?.firstOrNull { !it.isUpcoming }?.uploaded?.let {

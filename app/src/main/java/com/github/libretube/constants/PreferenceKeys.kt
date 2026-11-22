@@ -107,6 +107,13 @@ object PreferenceKeys {
     const val LOCAL_RYD = "local_return_youtube_dislikes"
     const val INCLUDE_TIMESTAMP_IN_BACKUP_FILENAME = "include_timestamp_in_filename"
 
+    // Downloads
+    const val AUTO_DOWNLOAD = "auto_download"
+    const val AUTO_DOWNLOAD_WIFI_ONLY = "auto_download_wifi_only"
+    const val AUTO_DOWNLOAD_VIDEO_QUALITY = "auto_download_video_quality"
+    const val AUTO_DOWNLOAD_AUDIO_QUALITY = "auto_download_audio_quality"
+    const val AUTO_DOWNLOAD_AUDIO_ONLY = "auto_download_audio_only"
+
     // History
     const val SELECTED_HISTORY_STATUS_FILTER = "filter_history_status"
 

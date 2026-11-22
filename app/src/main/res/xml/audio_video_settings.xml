@@ -64,4 +64,47 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/automatic_downloads">
+
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_download"
+            app:defaultValue="false"
+            app:key="auto_download"
+            app:summary="@string/auto_download_summary"
+            app:title="@string/auto_download" />
+
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_data_saver"
+            app:defaultValue="true"
+            app:key="auto_download_wifi_only"
+            app:summary="@string/auto_download_wifi_only_summary"
+            app:title="@string/auto_download_wifi_only" />
+
+        <ListPreference
+            android:icon="@drawable/ic_hd"
+            app:defaultValue="1080p"
+            app:entries="@array/autoDownloadVideoQuality"
+            app:entryValues="@array/autoDownloadVideoQualityValues"
+            app:key="auto_download_video_quality"
+            app:title="@string/auto_download_video_quality"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:icon="@drawable/ic_headphones"
+            app:defaultValue="128kbps"
+            app:entries="@array/autoDownloadAudioQuality"
+            app:entryValues="@array/autoDownloadAudioQualityValues"
+            app:key="auto_download_audio_quality"
+            app:title="@string/auto_download_audio_quality"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            android:icon="@drawable/ic_audio"
+            app:defaultValue="false"
+            app:key="auto_download_audio_only"
+            app:summary="@string/auto_download_audio_only_summary"
+            app:title="@string/auto_download_audio_only" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

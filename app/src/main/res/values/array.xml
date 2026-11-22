@@ -132,6 +132,50 @@
         <item>32kbps</item>
     </string-array>
 
+    <string-array name="autoDownloadAudioQuality">
+        <item>@string/auto</item>
+        <item>196kbps</item>
+        <item>128kbps</item>
+        <item>96kbps</item>
+        <item>64kbps</item>
+        <item>48kbps</item>
+        <item>32kbps</item>
+    </string-array>
+
+    <string-array name="autoDownloadAudioQualityValues">
+        <item>Auto</item>
+        <item>196kbps</item>
+        <item>128kbps</item>
+        <item>96kbps</item>
+        <item>64kbps</item>
+        <item>48kbps</item>
+        <item>32kbps</item>
+    </string-array>
+
+    <string-array name="autoDownloadVideoQuality">
+        <item>@string/auto_quality</item>
+        <item>2160p</item>
+        <item>1440p</item>
+        <item>1080p</item>
+        <item>720p</item>
+        <item>480p</item>
+        <item>360p</item>
+        <item>240p</item>
+        <item>144p</item>
+    </string-array>
+
+    <string-array name="autoDownloadVideoQualityValues">
+        <item>Auto</item>
+        <item>2160p</item>
+        <item>1440p</item>
+        <item>1080p</item>
+        <item>720p</item>
+        <item>480p</item>
+        <item>360p</item>
+        <item>240p</item>
+        <item>144p</item>
+    </string-array>
+
     <string-array name="checkingFrequency">
         <item>@string/checking_frequency_15_minutes</item>
         <item>@string/checking_frequency_30_minutes</item>
